@@ -1,4 +1,4 @@
-# lqr_study
+# LQR_study
 
 This repository refers to the code from the repo below.
 
