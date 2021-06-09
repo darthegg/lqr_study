@@ -3,6 +3,7 @@ import scipy.linalg as linalg
 
 import dynamics_model
 
+
 m1 = dynamics_model.m1
 m2 = dynamics_model.m2
 g = dynamics_model.g

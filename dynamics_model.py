@@ -1,5 +1,6 @@
 import numpy as np
 
+
 m1 = 0.3
 m2 = 0.2
 g = 9.8
