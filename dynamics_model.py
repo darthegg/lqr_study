@@ -9,11 +9,17 @@ l = L/2             # CoM of uniform rod
 I = (1./12) * m2 * (L**2)
 b = 1           # dampending coefficient
 
-state_space = np.array([0., 0., 0., 0.])  # state derivatives
+state_space = np.array([0., 0., 0., 0.])  # state derivatives [x', theta', x'', theta'']
 
 
 def state_space_dynamics(t, state, u):
-    # nonlinear system dynamics
+    """ 
+        Nonlinear system state-space representation. Becareful that state_space is different from state.
+        This is for simulator, not for controller! (System must be linearized to used for controller.)
+        state_space : [x', theta', x'', theta'']
+        state       : [x,  theta,  x',  theta' ]
+    """
+
     S = np.sin(state[1])
     C = np.cos(state[1])
     denominator = (m2*l*C)**2 - (m1+m2) * (m2*(l**2) + I)

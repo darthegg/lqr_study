@@ -9,9 +9,9 @@ from scipy.integrate import solve_ivp
 
 
 class Simulator:
-    def __init__(self, model, solver, sim_args):
+    def __init__(self, model, controller, sim_args):
         self.model = model
-        self.solver = solver
+        self.controller = controller
         self.initial = sim_args[0]
         self.final = sim_args[1]
         self.dt = sim_args[2]
@@ -46,11 +46,11 @@ class Simulator:
         return self.pendulumArm, self.cart
     
     def run_sim(self):
-        # Calculate every state frames
+        # Calculate every state frames with controller
         end_time = self.total_frames * self.dt
         time_steps = np.linspace(0.0, end_time, self.total_frames)
         self.animation_frame_states = solve_ivp(
-            lambda t, state: self.model.state_space_dynamics(t, state, self.solver.calculate_input(state, self.final)),
+            lambda t, state: self.model.state_space_dynamics(t, state, self.controller.calculate_input(state, self.final)),
             t_span = [0.0, end_time],
             y0 = self.initial,
             t_eval = time_steps,

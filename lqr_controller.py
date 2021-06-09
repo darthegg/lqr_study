@@ -12,7 +12,7 @@ l = dynamics_model.l             # CoM of uniform rod
 I = dynamics_model.I
 b = dynamics_model.b           # dampending coefficient
 
-# Linearized system
+"""This is 'linearized' system for controller."""
 denominator = m1*m2*(l**2) + I*(m1 + m2)
 A21 = (m2**2)*g*(l**2) / denominator
 A31 = m2*g*l*(m1+m2) / denominator

@@ -1,7 +1,7 @@
 import numpy as np
 
 import dynamics_model
-import lqr_solver
+import lqr_controller
 from simulator import Simulator
 
 
@@ -12,8 +12,8 @@ total_frames = 200
 
 sim_args = (initial, final, dt, total_frames)
 
-solver = lqr_solver
+controller = lqr_controller
 model = dynamics_model
-sim = Simulator(model, solver, sim_args)
+sim = Simulator(model, controller, sim_args)
 
 sim.run_sim()
