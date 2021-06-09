@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.linalg as linalg
-import dynamics_model
 
+import dynamics_model
 
 m1 = dynamics_model.m1
 m2 = dynamics_model.m2
@@ -42,10 +42,6 @@ P = np.matrix(linalg.solve_continuous_are(A, B, Q, R))
 K = np.matrix(linalg.inv(R)*(B.T*P))
 
 
-# eigVals, eigVecs = linalg.eig(A-B*K)
-# print("eigVecs")
-# print(eigVecs)
-# print("eigVals")
-# print(eigVals)
-# print("K")
-# print(K)
+def calculate_input(state, final):
+    u = np.matmul(-K, (state - final))
+    return u
